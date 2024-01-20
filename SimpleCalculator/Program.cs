@@ -1,3 +1,17 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using SimpleCalculator.Logger;
+using SimpleCalculator.Service;
+using SimpleCalculator.Reader;
 
-Console.WriteLine("Hello, World!");
+namespace SimpleCalculator;
+
+public static class Program
+{
+    public static void Main()
+    {
+        var logger = new ConsoleLogger();
+        var reader = new ConsoleReader();
+        var calculator = new Calculator();
+        var calculatorService = new CalculatorService(calculator, reader, logger);
+        calculatorService.Run();
+    }
+}
